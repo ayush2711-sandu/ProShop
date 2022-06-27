@@ -8,7 +8,7 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
-import { axiosInstance } from '../config'
+import axios from "axios"
 
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id
@@ -66,7 +66,7 @@ const ProductEditScreen = ({ match, history }) => {
         },
       }
 
-      const { data } = await axiosInstance.post('/api/upload', formData, config)
+      const { data } = await axios.post('/api/upload', formData, config)
 
       setImage(data)
       setUploading(false)
